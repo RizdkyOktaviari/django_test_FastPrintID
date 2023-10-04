@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from produk.models import Produk
 from produk.models import Kategori
 from produk.models import Status
+from produk.ProdukForm import ProdukForm
 
 class Index(ListView):
     queryset = Produk.objects.all()
@@ -12,7 +13,6 @@ class Index(ListView):
     
 
 class AddProduk(CreateView):
-    model = Produk
-    fields = ['nama_produk', 'harga', 'kategori', 'status']
+    form_class = ProdukForm
     template_name = 'produk/add.html'
     success_url = reverse_lazy('produk:index')

@@ -1,19 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Produk</title>
-</head>
-<body>
-    <h1>Add Produk</h1>
-    <form action="post">
+{% extends "layouts/index.html" %} {% block content %}
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Tambah Layanan</h1>
+  <p class="mb-4">Packclese</p>
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Tambah Layanan</h6>
+    </div>
+    <div class="card-body">
+      <!-- form start -->
+      <form action="" method="POST">
         {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <p><input type="submit" value="simpan"></p>
-    </form>
-</body>
-</html>
+        <div class="form-group">
+          <label for="id_nama_produk">Nama</label>
+          <input
+            type="text"
+            name="nama_produk"
+            class="form-control @error('name') is-invalid @enderror"
+            value=""
+            placeholder="Nama Produk"
+            required
+            id="id_nama_produk"
+          />
+          @error('name')
+          <span class="invalid-feedback" role="alert">
+            <strong>$message </strong>
+          </span>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="id_kategori">Kategori</label>
+          <select class="form-control" name="kategori" id="id_kategori">
+            <option disabled selected>Pilih Kategori</option>
+            {% for kategori in form.kategori.field.choices %}
+            <option value="{{ kategori.0 }}">{{ kategori.1 }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="id_status">Status</label>
+          <select
+            class="form-control @error('jenisservice_id') is-invalid @enderror"
+            name="status"
+            id="id_status"
+          >
+            <option disabled selected>Pilih Status</option>
+            {% for status in form.status.field.choices %}
+            <option value="{{ status.0 }}">{{ status.1 }}</option>
+            {% endfor %}
+          </select>
+          @error('jenisservice_id')
+          <span class="invalid-feedback" role="alert"> </span>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="id_harga">Harga</label>
+          <input
+            type="number"
+            name="harga"
+            class="form-control @error('price') is-invalid @enderror"
+            value=""
+            placeholder="Harga Layanan"
+            required
+            id="id_harga"
+          />
+          @error('price')
+          <span class="invalid-feedback" role="alert"> </span>
+          @enderror
+        </div>
+
+        <!-- button submit -->
+        <div class="form-group">
+          <div class="text-left">
+            <button type="submit" class="btn btn-success">Add</button>
+          </div>
+        </div>
+        <!-- end button submit -->
+      </form>
+      <!-- end form -->
+    </div>
+  </div>
+</div>
+{% endblock %}
