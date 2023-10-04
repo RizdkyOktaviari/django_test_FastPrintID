@@ -11,6 +11,8 @@
       <!-- form start -->
       <form action="" method="POST">
         {% csrf_token %}
+        
+        <!-- input nama_kategori -->
         <div class="form-group">
           <label for="id_nama_kategori">Nama</label>
           <input
@@ -26,6 +28,7 @@
           <div class="invalid-feedback">{{ error }}</div>
           {% endfor %}
         </div>
+        <!-- end input nama_kategori -->
 
         <!-- button submit -->
         <div class="form-group">

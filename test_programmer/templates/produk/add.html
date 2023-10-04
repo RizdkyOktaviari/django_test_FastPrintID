@@ -11,6 +11,8 @@
       <!-- form start -->
       <form action="" method="POST">
         {% csrf_token %}
+
+        <!-- input nama_produk -->
         <div class="form-group">
           <label for="id_nama_produk">Nama</label>
           <input
@@ -26,7 +28,9 @@
           <div class="invalid-feedback">{{ error }}</div>
           {% endfor %}
         </div>
+        <!-- end input nama_produk -->
 
+        <!-- input kategori -->
         <div class="form-group">
           <label for="id_kategori">Kategori</label>
           <select class="form-control {% if form.errors.kategori %}is-invalid{% endif %}" name="kategori" id="id_kategori">
@@ -39,7 +43,9 @@
           <div class="invalid-feedback">{{ error }}</div>
           {% endfor %}
         </div>
+        <!-- end input kategori -->
 
+        <!-- input status -->
         <div class="form-group">
           <label for="id_status">Status</label>
           <select
@@ -56,7 +62,9 @@
           <div class="invalid-feedback">{{ error }}</div>
           {% endfor %}
         </div>
+        <!-- end input status -->
 
+        <!-- input harga -->
         <div class="form-group">
           <label for="id_harga">Harga</label>
           <input
@@ -72,6 +80,8 @@
           <div class="invalid-feedback">{{ error }}</div>
           {% endfor %}
         </div>
+        <!-- end input harga -->
+
         <!-- button submit -->
         <div class="form-group">
           <div class="text-left">

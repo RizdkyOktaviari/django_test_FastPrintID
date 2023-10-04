@@ -5,8 +5,10 @@ class ProdukForm(forms.ModelForm):
     class Meta:
         model = Produk
         fields = ['nama_produk', 'harga', 'kategori', 'status']
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Mengambil data dari database
         self.fields['kategori'].choices = [(k.id, k.nama_kategori) for k in Kategori.objects.all()]
         self.fields['status'].choices = [(s.id, s.nama_status) for s in Status.objects.all()]
 

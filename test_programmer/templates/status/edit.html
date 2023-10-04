@@ -11,6 +11,8 @@
       <!-- form start -->
       <form action="" method="POST">
         {% csrf_token %}
+
+        <!-- input nama_status -->
         <div class="form-group">
           <label for="id_nama_status">Nama</label>
           <input
@@ -26,7 +28,8 @@
           <div class="invalid-feedback">{{ error }}</div>
           {% endfor %}
         </div>
-
+        <!-- end input nama_status -->
+        
         <!-- button submit -->
         <div class="form-group">
           <div class="text-left">
