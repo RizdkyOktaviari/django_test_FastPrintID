@@ -16,44 +16,45 @@
           <input
             type="text"
             name="nama_produk"
-            class="form-control @error('name') is-invalid @enderror"
-            value=""
+            class="form-control {% if form.errors.nama_produk %}is-invalid{% endif %}"
+            value="{{ form.cleaned_data.nama_produk }}"
             placeholder="Nama Produk"
             required
             id="id_nama_produk"
           />
-          @error('name')
-          <span class="invalid-feedback" role="alert">
-            <strong>$message </strong>
-          </span>
-          @enderror
+          {% for error in form.errors.nama_produk %}
+          <div class="invalid-feedback">{{ error }}</div>
+          {% endfor %}
         </div>
 
         <div class="form-group">
           <label for="id_kategori">Kategori</label>
-          <select class="form-control" name="kategori" id="id_kategori">
+          <select class="form-control {% if form.errors.kategori %}is-invalid{% endif %}" name="kategori" id="id_kategori">
             <option disabled selected>Pilih Kategori</option>
-            {% for kategori in form.kategori.field.choices %}
-            <option value="{{ kategori.0 }}">{{ kategori.1 }}</option>
+            {% for id, nama_kategori in form.kategori.field.choices %} 
+            <option value="{{ id }}" {% if form.cleaned_data.kategori.id == id %}selected{% endif %}>{{ nama_kategori }}</option>
             {% endfor %}
           </select>
+          {% for error in form.errors.kategori %}
+          <div class="invalid-feedback">{{ error }}</div>
+          {% endfor %}
         </div>
 
         <div class="form-group">
           <label for="id_status">Status</label>
           <select
-            class="form-control @error('jenisservice_id') is-invalid @enderror"
+            class="form-control {% if form.errors.status %}is-invalid{% endif %}"
             name="status"
             id="id_status"
           >
             <option disabled selected>Pilih Status</option>
-            {% for status in form.status.field.choices %}
-            <option value="{{ status.0 }}">{{ status.1 }}</option>
+            {% for id, nama_status in form.status.field.choices %} 
+            <option value="{{ id }}" {% if form.cleaned_data.status.id == id %}selected{% endif %}>{{ nama_status }}</option>
             {% endfor %}
           </select>
-          @error('jenisservice_id')
-          <span class="invalid-feedback" role="alert"> </span>
-          @enderror
+          {% for error in form.errors.status %}
+          <div class="invalid-feedback">{{ error }}</div>
+          {% endfor %}
         </div>
 
         <div class="form-group">
@@ -61,15 +62,15 @@
           <input
             type="number"
             name="harga"
-            class="form-control @error('price') is-invalid @enderror"
-            value=""
+            class="form-control {% if form.errors.harga %}is-invalid{% endif %}"
+            value="{{ form.cleaned_data.harga }}"
             placeholder="Harga Produk"
             required
             id="id_harga"
           />
-          @error('price')
-          <span class="invalid-feedback" role="alert"> </span>
-          @enderror
+          {% for error in form.errors.harga %}
+          <div class="invalid-feedback">{{ error }}</div>
+          {% endfor %}
         </div>
         <!-- button submit -->
         <div class="form-group">

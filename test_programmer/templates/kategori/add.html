@@ -16,17 +16,15 @@
           <input
             type="text"
             name="nama_kategori"
-            class="form-control @error('name') is-invalid @enderror"
-            value=""
+            class="form-control {% if form.errors.nama_kategori %}is-invalid{% endif %}"
+            value="{{ form.cleaned_data.nama_kategori }}"
             placeholder="Nama Kategori"
             required
             id="id_nama_kategori"
           />
-          @error('name')
-          <span class="invalid-feedback" role="alert">
-            <strong>$message </strong>
-          </span>
-          @enderror
+          {% for error in form.errors.nama_kategori %}
+          <div class="invalid-feedback">{{ error }}</div>
+          {% endfor %}
         </div>
 
         <!-- button submit -->
