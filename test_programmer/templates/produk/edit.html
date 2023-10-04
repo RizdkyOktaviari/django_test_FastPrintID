@@ -1,11 +1,11 @@
 {% extends "layouts/index.html" %} {% block content %}
 <div class="container-fluid">
-  <h1 class="h3 mb-2 text-gray-800">Tambah Produk</h1>
+  <h1 class="h3 mb-2 text-gray-800">Edit Produk</h1>
   <p class="mb-4">Packclese</p>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Tambah Produk</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Edit Produk</h6>
     </div>
     <div class="card-body">
       <!-- form start -->
@@ -17,7 +17,7 @@
             type="text"
             name="nama_produk"
             class="form-control @error('name') is-invalid @enderror"
-            value=""
+            value="{{ produk.nama_produk }}"
             placeholder="Nama Produk"
             required
             id="id_nama_produk"
@@ -28,13 +28,15 @@
           </span>
           @enderror
         </div>
-
         <div class="form-group">
           <label for="id_kategori">Kategori</label>
           <select class="form-control" name="kategori" id="id_kategori">
-            <option disabled selected>Pilih Kategori</option>
-            {% for kategori in form.kategori.field.choices %}
-            <option value="{{ kategori.0 }}">{{ kategori.1 }}</option>
+            {% for id, nama_kategori in form.kategori.field.choices %} 
+            {% if id == produk.kategori.id %}
+            <option value="{{ id }}" selected>{{ nama_kategori }}</option>
+            {% else %}
+            <option value="{{ id }}">{{ nama_kategori }}</option>
+            {% endif %} 
             {% endfor %}
           </select>
         </div>
@@ -46,10 +48,13 @@
             name="status"
             id="id_status"
           >
-            <option disabled selected>Pilih Status</option>
-            {% for status in form.status.field.choices %}
-            <option value="{{ status.0 }}">{{ status.1 }}</option>
-            {% endfor %}
+          {% for id, nama_status in form.status.field.choices %} 
+          {% if id == produk.status.id %}
+          <option value="{{ id }}" selected>{{ nama_status }}</option>
+          {% else %}
+          <option value="{{ id }}">{{ nama_status }}</option>
+          {% endif %} 
+          {% endfor %}
           </select>
           @error('jenisservice_id')
           <span class="invalid-feedback" role="alert"> </span>
@@ -62,8 +67,8 @@
             type="number"
             name="harga"
             class="form-control @error('price') is-invalid @enderror"
-            value=""
-            placeholder="Harga Produk"
+            value="{{ produk.harga }}"
+            placeholder="Harga Layanan"
             required
             id="id_harga"
           />
@@ -71,10 +76,11 @@
           <span class="invalid-feedback" role="alert"> </span>
           @enderror
         </div>
+
         <!-- button submit -->
         <div class="form-group">
           <div class="text-left">
-            <button type="submit" class="btn btn-success">Add</button>
+            <button type="submit" class="btn btn-success">Edit</button>
           </div>
         </div>
         <!-- end button submit -->

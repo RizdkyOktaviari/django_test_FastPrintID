@@ -1,12 +1,13 @@
-{% extends "layouts/index.html" %} {% block content %}
+{% extends "layouts/index.html" %} 
+{% block content %}
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">List Produk</h1>
-  <p class="mb-4">Data Produk</p>
+  <h1 class="h3 mb-2 text-gray-800">List Status</h1>
+  <p class="mb-4">Data Status</p>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">List Produk</h6>
+      <h6 class="m-0 font-weight-bold text-primary">List Status</h6>
     </div>
     <div class="card-body">
       <!-- Start Tabel -->
@@ -19,29 +20,23 @@
         >
           <thead>
             <tr>
-              <th>Nama</th>
-              <th>Harga</th>
-              <th>Kategori</th>
-              <th>Status</th>
+              <th>Nama Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {% for produk in object_list %}
+            {% for status in object_list %}
             <tr>
-              <td>{{ produk.nama_produk }}</td>
-              <td>{{ produk.harga }}</td>
-              <td>{{ produk.kategori }}</td>
-              <td>{{ produk.status }}</td>
+              <td>{{ status.nama_status }}</td>
               <td>
-                <a href="{% url 'produk:edit_produk' produk.id %}" class="btn btn-m btn-warning"
+                <a href="{% url 'produk:edit_status' status.id %}" class="btn btn-m btn-warning"
                   ><i class="fas fa-edit"></i
                 ></a>
                 <a
                   href="#"
                   class="btn btn-danger"
                   data-toggle="modal"
-                  data-target="#exampleModal{{ produk.id }}"
+                  data-target="#exampleModal{{ status.id }}"
                 >
                   <i class="fas fa-trash"></i>
                 </a>
@@ -51,7 +46,7 @@
             <!-- Start Modal -->
             <div
               class="modal fade"
-              id="exampleModal{{ produk.id }}"
+              id="exampleModal{{ status.id }}"
               tabindex="-1"
               aria-labelledby="exampleModalLabel"
               aria-hidden="true"
@@ -80,7 +75,7 @@
                     >
                       Batal
                     </button>
-                    <a href="{% url 'produk:delete_produk' produk.id %}" class="btn btn-danger">Hapus</a>
+                    <a href="{% url 'produk:delete_status' status.id %}" class="btn btn-danger">Hapus</a>
                   </div>
                 </div>
               </div>

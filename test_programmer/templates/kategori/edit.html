@@ -1,0 +1,44 @@
+{% extends "layouts/index.html" %} {% block content %}
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Tambah Kategori</h1>
+  <p class="mb-4">Packclese</p>
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Tambah Kategori</h6>
+    </div>
+    <div class="card-body">
+      <!-- form start -->
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_nama_kategori">Nama</label>
+          <input
+            type="text"
+            name="nama_kategori"
+            class="form-control @error('name') is-invalid @enderror"
+            value="{{ kategori.nama_kategori }}"
+            placeholder="Nama Kategori"
+            required
+            id="id_nama_kategori"
+          />
+          @error('name')
+          <span class="invalid-feedback" role="alert">
+            <strong>$message </strong>
+          </span>
+          @enderror
+        </div>
+
+        <!-- button submit -->
+        <div class="form-group">
+          <div class="text-left">
+            <button type="submit" class="btn btn-success">Edit</button>
+          </div>
+        </div>
+        <!-- end button submit -->
+      </form>
+      <!-- end form -->
+    </div>
+  </div>
+</div>
+{% endblock %}
