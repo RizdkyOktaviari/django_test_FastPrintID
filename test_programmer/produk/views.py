@@ -176,3 +176,65 @@ def delete_status(request, status_id):
     status = Status.objects.get(id=status_id)
     status.delete()
     return redirect('produk:index_status')
+
+# view API Produk
+
+from rest_framework import generics
+from .serializers import ProdukSerializer
+
+
+class ProdukApi(generics.ListCreateAPIView):
+    queryset = Produk.objects.all()
+    serializer_class = ProdukSerializer
+
+class ProdukCreateApi(generics.CreateAPIView):
+    queryset = Produk.objects.all()
+    serializer_class = ProdukSerializer
+
+class ProdukUpdateApi(generics.UpdateAPIView):
+    queryset = Produk.objects.all()
+    serializer_class = ProdukSerializer
+
+class ProdukDeleteApi(generics.DestroyAPIView):
+    queryset = Produk.objects.all()
+    serializer_class = ProdukSerializer
+
+# view API Kategori
+
+from .serializers import KategoriSerializer
+
+class KategoriApi(generics.ListCreateAPIView):
+    queryset = Kategori.objects.all()
+    serializer_class = KategoriSerializer
+
+class KategoriCreateApi(generics.CreateAPIView):
+    queryset = Kategori.objects.all()
+    serializer_class = KategoriSerializer
+
+class KategoriUpdateApi(generics.UpdateAPIView):
+    queryset = Kategori.objects.all()
+    serializer_class = KategoriSerializer
+
+class KategoriDeleteApi(generics.DestroyAPIView):   
+    queryset = Kategori.objects.all()
+    serializer_class = KategoriSerializer
+
+# view API Status
+
+from .serializers import StatusSerializer
+
+class StatusApi(generics.ListCreateAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+
+class StatusCreateApi(generics.CreateAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+
+class StatusUpdateApi(generics.UpdateAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+
+class StatusDeleteApi(generics.DestroyAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer

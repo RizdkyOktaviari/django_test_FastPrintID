@@ -21,4 +21,20 @@ urlpatterns = [
     path('add_status/', views.AddStatus.as_view(), name='add_status'),
     path('edit_status/<pk>', views.EditStatus.as_view(), name='edit_status'),
     path('delete_status/<int:status_id>/', views.delete_status, name='delete_status'),
+    # API Produk
+    path('api/produk/', views.ProdukApi.as_view(), name='produk-list'),
+    path('api/add_produk/' , views.ProdukCreateApi.as_view(), name='produk-create'),
+    path('api/edit_produk/<int:pk>/', views.ProdukUpdateApi.as_view(), name='produk-update'),
+    path('api/delete_produk/<int:pk>/', views.ProdukDeleteApi.as_view(), name='produk-delete'),
+    # API Kategori
+    path('api/kategori/', views.KategoriApi.as_view(), name='kategori-list'),
+    path('api/add_kategori/' , views.KategoriCreateApi.as_view(), name='kategori-create'),
+    path('api/edit_kategori/<int:pk>/', views.KategoriUpdateApi.as_view(), name='kategori-update'),
+    path('api/delete_kategori/<int:pk>/', views.KategoriDeleteApi.as_view(), name='kategori-delete'),
+    # API Status
+    path('api/status/', views.StatusApi.as_view(), name='status-list'),
+    path('api/add_status/' , views.StatusCreateApi.as_view(), name='status-create'),
+    path('api/edit_status/<int:pk>/', views.StatusUpdateApi.as_view(), name='status-update'),
+    path('api/delete_status/<int:pk>/', views.StatusDeleteApi.as_view(), name='status-delete'),
+
 ]
